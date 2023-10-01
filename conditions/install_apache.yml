@@ -1,0 +1,22 @@
+---
+- name: Install apache
+  hosts: all
+  gather_facts: True
+  become: yes
+  tasks:
+    # your code goes here...
+    # - install apache2 when Ubuntu
+    # - install httpd when CentOS
+
+     - name: Install Apache on Ubuntu
+       package:
+         name: apache2
+         state: present
+       when: ansible_distribution == "Ubuntu"
+
+     - name: Install httpd on Centos
+       package:
+          name: httpd
+          state: present
+       when: ansible_distribution == "CentOS"
+ 
